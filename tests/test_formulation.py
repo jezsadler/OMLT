@@ -1,4 +1,6 @@
 import pytest
+from pyomo.environ import ConcreteModel, Objective, SolverFactory, value
+
 from omlt import OmltBlock
 from omlt.formulation import _setup_scaled_inputs_outputs
 from omlt.scaling import OffsetScaling

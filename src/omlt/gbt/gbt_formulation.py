@@ -15,17 +15,15 @@ class GBTBigMFormulation(_PyomoFormulation):
     constraints to enforce splitting rules according to:
 
     References:
-    ----------
-     * Misic, V. "Optimization of tree ensembles."
-       Operations Research 68.5 (2020): 1605-1624.
-     * Mistry, M., et al. "Mixed-integer convex nonlinear optimization with
-        gradient-boosted trees embedded."
-       INFORMS Journal on Computing (2020).
+         * Misic, V. "Optimization of tree ensembles."
+           Operations Research 68.5 (2020): 1605-1624.
+         * Mistry, M., et al. "Mixed-integer convex nonlinear optimization with
+           gradient-boosted trees embedded."
+           INFORMS Journal on Computing (2020).
 
-    Parameters
-    ----------
-    tree_ensemble_structure : GradientBoostedTreeModel
-        the tree ensemble definition
+    Parameters:
+        tree_ensemble_structure (GradientBoostedTreeModel):
+            the tree ensemble definition
     """
 
     def __init__(self, gbt_model):
@@ -63,7 +61,7 @@ class GBTBigMFormulation(_PyomoFormulation):
         )
 
 
-def add_formulation_to_block(block, model_definition, input_vars, output_vars):
+def add_formulation_to_block(block, model_definition, input_vars, output_vars):  # noqa: C901, PLR0915
     r"""Adds the gradient-boosted trees formulation to the given Pyomo block.
 
     .. math::
@@ -89,23 +87,21 @@ def add_formulation_to_block(block, model_definition, input_vars, output_vars):
 
 
     References:
-    ----------
-     * Misic, V. "Optimization of tree ensembles."
-       Operations Research 68.5 (2020): 1605-1624.
-     * Mistry, M., et al. "Mixed-integer convex nonlinear optimization with
-        gradient-boosted trees embedded."
-       INFORMS Journal on Computing (2020).
+         * Misic, V. "Optimization of tree ensembles."
+           Operations Research 68.5 (2020): 1605-1624.
+         * Mistry, M., et al. "Mixed-integer convex nonlinear optimization with
+           gradient-boosted trees embedded."
+           INFORMS Journal on Computing (2020).
 
-    Parameters
-    ----------
-    block : Block
-        the Pyomo block
-    tree_ensemble_structure : GradientBoostedTreeModel
-        the tree ensemble definition
-    input_vars : Var
-        the input variables of the Pyomo block
-    output_vars : Var
-        the output variables of the Pyomo block
+    Parameters:
+        block (Block):
+            the Pyomo block
+        tree_ensemble_structure (GradientBoostedTreeModel):
+            the tree ensemble definition
+        input_vars (Var):
+            the input variables of the Pyomo block
+        output_vars (Var):
+            the output variables of the Pyomo block
 
     """
     if isinstance(model_definition, GradientBoostedTreeModel):
@@ -129,13 +125,7 @@ def add_formulation_to_block(block, model_definition, input_vars, output_vars):
     nodes_node_ids = np.array(attr["nodes_nodeids"].ints)
     nodes_false_node_ids = np.array(attr["nodes_falsenodeids"].ints)
     nodes_true_node_ids = np.array(attr["nodes_truenodeids"].ints)
-    nodes_hitrates = np.array(attr["nodes_hitrates"].floats)
-    nodes_missing_value_tracks_true = np.array(
-        attr["nodes_missing_value_tracks_true"].ints
-    )
 
-    n_targets = attr["n_targets"].i
-    target_ids = np.array(attr["target_ids"].ints)
     target_node_ids = np.array(attr["target_nodeids"].ints)
     target_tree_ids = np.array(attr["target_treeids"].ints)
     target_weights = np.array(attr["target_weights"].floats)
