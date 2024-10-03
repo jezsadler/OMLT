@@ -1,4 +1,5 @@
 from omlt.base.language import DEFAULT_MODELING_LANGUAGE
+
 from omlt.dependencies import julia_available
 
 # if julia_available:
@@ -19,6 +20,7 @@ from omlt.base.pyomo import (
     OmltScalarPyomo,
 )
 from omlt.base.var import OmltIndexed, OmltScalar, OmltVar, OmltVarFactory
+
 
 __all__ = [
     "DEFAULT_MODELING_LANGUAGE",
